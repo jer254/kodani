@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "KODANI | Design-Led Digital Solutions",
-  description: "KODANI helps businesses, startups, and organizations turn ideas into intuitive, high-performing digital experiences through UI/UX design, frontend development, and branding.",
+  description: "KODANI helps businesses, startups, and organizations turn ideas into intuitive, high-performing digital experiences through UI/UX design, software development, and branding.",
 };
 
 export default function RootLayout({

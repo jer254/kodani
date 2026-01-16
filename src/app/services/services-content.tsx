@@ -52,7 +52,7 @@ const services = [
   {
     id: "frontend",
     icon: Code,
-    title: "Frontend Development",
+    title: "Software Development",
     description: "Fast, scalable, and user-friendly interfaces built with modern technologies.",
     features: [
       { icon: Globe, text: "Responsive websites" },

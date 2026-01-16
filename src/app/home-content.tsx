@@ -34,8 +34,8 @@ const services = [
   },
   {
     icon: Code,
-    title: "Frontend Development",
-    description: "We build fast, responsive, and scalable web interfaces using modern frontend technologies.",
+    title: "Software Development",
+    description: "We build fast, responsive, and scalable software experiences using modern technologies.",
   },
   {
     icon: Brush,
@@ -64,13 +64,13 @@ const process = [
   { step: 1, icon: Search, title: "Discovery", description: "Understanding your goals, users, and challenges" },
   { step: 2, icon: Target, title: "Strategy & UX", description: "Defining structure, flows, and experience" },
   { step: 3, icon: PenTool, title: "Design", description: "Creating intuitive and visually appealing interfaces" },
-  { step: 4, icon: Code, title: "Development", description: "Building responsive and performant frontend solutions" },
+  { step: 4, icon: Code, title: "Development", description: "Building responsive and performant software solutions" },
   { step: 5, icon: Rocket, title: "Launch & Support", description: "Deployment, testing, and ongoing improvements" },
 ];
 
 const projects = [
   { title: "E-Commerce Platform", category: "UI/UX Design", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop" },
-  { title: "SaaS Dashboard", category: "Frontend Development", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop" },
+  { title: "SaaS Dashboard", category: "Software Development", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop" },
   { title: "Brand Identity System", category: "Digital Branding", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=450&fit=crop" },
 ];
 

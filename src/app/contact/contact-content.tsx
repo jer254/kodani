@@ -11,14 +11,14 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@kodani.com",
-    href: "mailto:hello@kodani.com",
+    value: "enquiry.kodani@gmail.com",
+    href: "mailto:enquiry.kodani@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone / WhatsApp",
-    value: "+1 (234) 567-890",
-    href: "tel:+1234567890",
+    value: "0743551170",
+    href: "tel:0743551170",
   },
   {
     icon: Clock,

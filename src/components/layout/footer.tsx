@@ -12,7 +12,7 @@ const navigation = {
   ],
   services: [
     { name: "UI/UX Design", href: "/services#uiux" },
-    { name: "Frontend Development", href: "/services#frontend" },
+    { name: "Software Development", href: "/services#frontend" },
     { name: "Digital Branding", href: "/services#branding" },
     { name: "Product Consulting", href: "/services#consulting" },
   ],
@@ -89,20 +89,20 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li>
                 <a
-                  href="mailto:hello@kodani.com"
+                  href="mailto:enquiry.kodani@gmail.com"
                   className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   <Mail className="h-4 w-4" />
-                  hello@kodani.com
+                  enquiry.kodani@gmail.com
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+1234567890"
+                  href="tel:0743551170"
                   className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 >
                   <Phone className="h-4 w-4" />
-                  +1 (234) 567-890
+                  0743551170
                 </a>
               </li>
             </ul>
@@ -110,9 +110,19 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t border-border pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} KODANI. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+            <p className="text-center text-sm text-muted-foreground sm:text-left">
+              © {new Date().getFullYear()} KODANI. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 text-sm">
+              <Link href="/privacy" className="text-muted-foreground transition-colors hover:text-foreground">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-muted-foreground transition-colors hover:text-foreground">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
