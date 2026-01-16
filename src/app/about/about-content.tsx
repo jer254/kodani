@@ -93,7 +93,6 @@ export default function AboutContent() {
             </FadeIn>
             <FadeIn direction="left" className="lg:order-1">
               <p className="text-sm font-medium text-accent">Leadership</p>
-              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Founder & Lead Consultant</h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
                 The founder of KODANI is a design-driven tech solutions provider with a strong foundation in <span className="text-foreground font-medium">Computer Science</span> and professional experience as a <span className="text-foreground font-medium">university IT trainer</span>. His work focuses on the intersection of <span className="text-accent font-medium">UI/UX design</span>, <span className="text-accent font-medium">software development</span>, and <span className="text-accent font-medium">digital branding</span>, where thoughtful design and reliable technology come together to create meaningful digital experiences.
               </p>
