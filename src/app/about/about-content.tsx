@@ -94,10 +94,13 @@ export default function AboutContent() {
               <p className="text-sm font-medium text-accent">Leadership</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Founder & Lead Consultant</h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                KODANI was founded by a computer science graduate and IT trainer with hands-on experience in frontend development, UI/UX design, and graphic design.
+                The founder of KODANI is a design-driven tech solutions provider with a strong foundation in Computer Science and professional experience as a university IT trainer. His work focuses on the intersection of UI/UX design, frontend development, and digital branding, where thoughtful design and reliable technology come together to create meaningful digital experiences.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                With a background in education and real-world system development, KODANI brings clarity, structure, and professionalism to every project.
+                Through years of teaching and hands-on project work, he has developed a deep understanding of how people interact with digital systems and how organizations can use technology more effectively. He approaches every project with a user-centered mindset, translating complex ideas into clear, intuitive, and scalable solutions that support both user needs and business goals.
+              </p>
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">
+                His vision is to build digital products that are not only functional and visually refined, but also accessible, impactful, and capable of driving long-term growth for businesses and organizations across Africa and beyond.
               </p>
             </FadeIn>
           </div>
