@@ -97,12 +97,12 @@ export default function HomeContent() {
           </FadeIn>
           
           <FadeIn delay={0.6}>
-            <div className="mt-10 flex items-center justify-center gap-4">
+            <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
               <Link href="/contact">
-                <Button size="lg" className="glow animate-shimmer">Start a Project</Button>
+                <Button size="lg" className="w-full glow animate-shimmer sm:w-auto">Start a Project</Button>
               </Link>
               <Link href="/work">
-                <Button variant="outline" size="lg">View Our Work</Button>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">View Our Work</Button>
               </Link>
             </div>
           </FadeIn>
