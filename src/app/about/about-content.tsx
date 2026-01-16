@@ -26,11 +26,6 @@ export default function AboutContent() {
               About <span className="gradient-text">KODANI</span>
             </h1>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              KODANI is a design-led technology company focused on creating intuitive digital experiences. We work at the intersection of design, development, and strategy to help organizations build products that people actually enjoy using.
-            </p>
-          </FadeIn>
         </div>
       </section>
 
@@ -43,10 +38,10 @@ export default function AboutContent() {
               <div>
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Approach</h2>
                 <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                  We believe great digital products are built when design and technology work together. Every project begins with understanding users, defining clarity, and delivering solutions that are scalable and purposeful.
+                  We believe great digital products are built when <span className="text-foreground font-medium">design</span> and <span className="text-foreground font-medium">technology</span> work together. Every project begins with understanding <span className="text-accent font-medium">users</span>, defining clarity, and delivering solutions that are <span className="text-accent font-medium">scalable</span> and purposeful.
                 </p>
                 <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                  Our methodology combines strategic thinking with hands-on execution, ensuring that every solution we deliver is not just visually appealing but also technically sound and user-focused.
+                  Our methodology combines <span className="text-foreground font-medium">strategic thinking</span> with hands-on execution, ensuring that every solution we deliver is not just visually appealing but also <span className="text-accent font-medium">technically sound</span> and user-focused.
                 </p>
               </div>
             </FadeIn>
@@ -78,7 +73,7 @@ export default function AboutContent() {
                 <ScaleOnHover>
                   <div className="aspect-square w-80 sm:w-96 rounded-2xl overflow-hidden relative glow">
                     <Image
-                      src="/images/founder.jpg"
+                      src="https://www.dropbox.com/scl/fi/zrsydbd9jveiqkjeu2qbs/jerry.jpeg?rlkey=mf17aak73ifvwgqpdrf2mlyet&raw=1"
                       alt="Founder"
                       fill
                       className="object-cover object-center"
@@ -94,13 +89,13 @@ export default function AboutContent() {
               <p className="text-sm font-medium text-accent">Leadership</p>
               <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Founder & Lead Consultant</h2>
               <p className="mt-6 text-lg leading-8 text-muted-foreground">
-                The founder of KODANI is a design-driven tech solutions provider with a strong foundation in Computer Science and professional experience as a university IT trainer. His work focuses on the intersection of UI/UX design, frontend development, and digital branding, where thoughtful design and reliable technology come together to create meaningful digital experiences.
+                The founder of KODANI is a design-driven tech solutions provider with a strong foundation in <span className="text-foreground font-medium">Computer Science</span> and professional experience as a <span className="text-foreground font-medium">university IT trainer</span>. His work focuses on the intersection of <span className="text-accent font-medium">UI/UX design</span>, <span className="text-accent font-medium">frontend development</span>, and <span className="text-accent font-medium">digital branding</span>, where thoughtful design and reliable technology come together to create meaningful digital experiences.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                Through years of teaching and hands-on project work, he has developed a deep understanding of how people interact with digital systems and how organizations can use technology more effectively. He approaches every project with a user-centered mindset, translating complex ideas into clear, intuitive, and scalable solutions that support both user needs and business goals.
+                Through years of teaching and hands-on project work, he has developed a deep understanding of how people interact with digital systems and how organizations can use technology more effectively. He approaches every project with a <span className="text-accent font-medium">user-centered</span> mindset, translating complex ideas into clear, intuitive, and <span className="text-accent font-medium">scalable</span> solutions that support both user needs and business goals.
               </p>
               <p className="mt-4 text-lg leading-8 text-muted-foreground">
-                His vision is to build digital products that are not only functional and visually refined, but also accessible, impactful, and capable of driving long-term growth for businesses and organizations across Africa and beyond.
+                His vision is to build digital products that are not only functional and visually refined, but also <span className="text-accent font-medium">accessible</span>, <span className="text-accent font-medium">impactful</span>, and capable of driving long-term growth for businesses and organizations across <span className="text-foreground font-medium">Africa</span> and beyond.
               </p>
             </FadeIn>
           </div>
