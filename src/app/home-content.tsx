@@ -78,7 +78,7 @@ const projects = [
   {
     title: "EcoWave Tours",
     category: "Website",
-    image: "https://image.thum.io/get/width/1200/https://www.ecowavetours.com",
+    image: "https://www.dropbox.com/scl/fi/6sb2tbsikz6t3qbt2avek/ecowave.png?rlkey=tlyhtxrqzfdrgqwg0rl3sraj9&raw=1",
     url: "https://www.ecowavetours.com",
   },
   {

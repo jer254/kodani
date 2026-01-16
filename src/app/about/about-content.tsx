@@ -70,16 +70,22 @@ export default function AboutContent() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <FadeIn direction="right" className="flex items-center justify-center lg:order-2">
               <div className="relative">
-                <ScaleOnHover>
-                  <div className="aspect-square w-80 sm:w-96 rounded-2xl overflow-hidden relative glow">
-                    <Image
-                      src="https://www.dropbox.com/scl/fi/qjin89vue18b80fsxk8gw/jeremy.jpeg?rlkey=gu5n49l705c6ckgthffifidoi&raw=1"
-                      alt="Founder"
-                      fill
-                      className="object-cover object-center"
-                    />
+                <div className="space-y-4">
+                  <ScaleOnHover>
+                    <div className="aspect-square w-80 sm:w-96 rounded-2xl overflow-hidden relative glow">
+                      <Image
+                        src="https://www.dropbox.com/scl/fi/qjin89vue18b80fsxk8gw/jeremy.jpeg?rlkey=gu5n49l705c6ckgthffifidoi&raw=1"
+                        alt="Founder"
+                        fill
+                        className="object-cover object-center"
+                      />
+                    </div>
+                  </ScaleOnHover>
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold">Jeremiah Ndegwa</h3>
+                    <p className="text-muted-foreground">Founder & Lead Consultant</p>
                   </div>
-                </ScaleOnHover>
+                </div>
                 <div className="absolute -bottom-4 -right-4 flex h-16 w-16 items-center justify-center rounded-full border border-accent/50 bg-background glow animate-pulse-glow">
                   <User className="h-8 w-8 text-accent" />
                 </div>
