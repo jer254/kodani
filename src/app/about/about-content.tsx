@@ -73,7 +73,7 @@ export default function AboutContent() {
                 <ScaleOnHover>
                   <div className="aspect-square w-80 sm:w-96 rounded-2xl overflow-hidden relative glow">
                     <Image
-                      src="https://www.dropbox.com/scl/fi/zrsydbd9jveiqkjeu2qbs/jerry.jpeg?rlkey=mf17aak73ifvwgqpdrf2mlyet&raw=1"
+                      src="https://www.dropbox.com/scl/fi/qjin89vue18b80fsxk8gw/jeremy.jpeg?rlkey=gu5n49l705c6ckgthffifidoi&raw=1"
                       alt="Founder"
                       fill
                       className="object-cover object-center"
