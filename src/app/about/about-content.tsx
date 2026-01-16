@@ -33,7 +33,7 @@ export default function AboutContent() {
       <section className="relative border-t border-border px-6 py-24 lg:px-8 overflow-hidden">
         <DotPattern className="opacity-30" />
         <div className="mx-auto max-w-7xl relative z-10">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-12 lg:gap-16">
             <FadeIn direction="left">
               <div>
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Approach</h2>

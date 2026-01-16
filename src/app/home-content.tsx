@@ -92,7 +92,7 @@ export default function HomeContent() {
           
           <FadeIn delay={0.4}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              KODANI helps businesses, startups, and organizations turn ideas into intuitive, high-performing digital experiences through UI/UX design, frontend development, and branding.
+              We design and build polished websites and digital brands that feel great to use—and help you win trust, leads, and growth.
             </p>
           </FadeIn>
           

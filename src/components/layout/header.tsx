@@ -6,12 +6,12 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navigation = [
-  { name: "Home", href: "/" },
+  { name: "Start Here", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Work", href: "/work" },
-  { name: "Process", href: "/process" },
-  { name: "Pricing", href: "/pricing" },
+  { name: "What We Do", href: "/services" },
+  { name: "Results", href: "/work" },
+  { name: "How We Work", href: "/process" },
+  { name: "Packages", href: "/pricing" },
   { name: "Contact", href: "/contact" },
 ];
 
