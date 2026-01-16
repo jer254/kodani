@@ -76,12 +76,12 @@ export default function AboutContent() {
             <FadeIn direction="right" className="flex items-center justify-center lg:order-2">
               <div className="relative">
                 <ScaleOnHover>
-                  <div className="aspect-square w-64 rounded-2xl overflow-hidden relative glow">
+                  <div className="aspect-square w-80 sm:w-96 rounded-2xl overflow-hidden relative glow">
                     <Image
-                      src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
+                      src="/images/founder.jpg"
                       alt="Founder"
                       fill
-                      className="object-cover"
+                      className="object-cover object-center"
                     />
                   </div>
                 </ScaleOnHover>
