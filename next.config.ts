@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "image.thum.io",
+      },
+      {
+        protocol: "https",
         hostname: "www.dropbox.com",
       },
       {

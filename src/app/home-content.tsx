@@ -69,9 +69,9 @@ const process = [
 ];
 
 const projects = [
-  { title: "E-Commerce Platform", category: "UI/UX Design", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop" },
-  { title: "SaaS Dashboard", category: "Software Development", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop" },
-  { title: "Brand Identity System", category: "Digital Branding", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&h=450&fit=crop" },
+  { title: "KODANI", category: "Website", image: "https://image.thum.io/get/width/1200/https://www.kodani.tech" },
+  { title: "EcoWave Tours", category: "Website", image: "https://image.thum.io/get/width/1200/https://www.ecowavetours.com" },
+  { title: "CohortSync", category: "Web App", image: "https://image.thum.io/get/width/1200/https://www.cohortsync.com" },
 ];
 
 export default function HomeContent() {

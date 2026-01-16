@@ -195,10 +195,10 @@ export default function ContactContent() {
                         className="mt-2 w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all"
                       >
                         <option value="">Select a range</option>
-                        <option value="< $5,000">Less than $5,000</option>
-                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                        <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-                        <option value="$25,000+">$25,000+</option>
+                        <option value="< $1,500">Less than $1,500</option>
+                        <option value="$1,500 - $3,000">$1,500 - $3,000</option>
+                        <option value="$3,000 - $4,500">$3,000 - $4,500</option>
+                        <option value="$4,500">$4,500</option>
                       </select>
                     </div>
                   </div>
