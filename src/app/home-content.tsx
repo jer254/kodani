@@ -69,9 +69,24 @@ const process = [
 ];
 
 const projects = [
-  { title: "KODANI", category: "Website", image: "https://image.thum.io/get/width/1200/https://www.kodani.tech" },
-  { title: "EcoWave Tours", category: "Website", image: "https://image.thum.io/get/width/1200/https://www.ecowavetours.com" },
-  { title: "CohortSync", category: "Web App", image: "https://image.thum.io/get/width/1200/https://www.cohortsync.com" },
+  {
+    title: "KODANI",
+    category: "Website",
+    image: "/images/selected-work/kodani.png",
+    url: "https://www.kodani.tech",
+  },
+  {
+    title: "EcoWave Tours",
+    category: "Website",
+    image: "https://image.thum.io/get/width/1200/https://www.ecowavetours.com",
+    url: "https://www.ecowavetours.com",
+  },
+  {
+    title: "CohortSync",
+    category: "Web App",
+    image: "https://image.thum.io/get/width/1200/https://www.cohortsync.com",
+    url: "https://www.cohortsync.com",
+  },
 ];
 
 export default function HomeContent() {
@@ -265,7 +280,12 @@ export default function HomeContent() {
           <StaggerContainer className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <StaggerItem key={project.title}>
-                <Link href="/work" className="group block">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
                   <ScaleOnHover>
                     <Card className="overflow-hidden transition-all duration-300 hover:border-accent/50 hover:glow">
                       <div className="aspect-video relative bg-secondary overflow-hidden">
@@ -286,7 +306,7 @@ export default function HomeContent() {
                       </CardHeader>
                     </Card>
                   </ScaleOnHover>
-                </Link>
+                </a>
               </StaggerItem>
             ))}
           </StaggerContainer>
