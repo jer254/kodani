@@ -15,7 +15,7 @@ export default function PrivacyPage() {
           </FadeIn>
           <FadeIn delay={0.2}>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              We respect your privacy and are committed to protecting the information you share with KODANI.
+              We respect your privacy and are committed to protecting the information you share with Kodani Tech Solutions.
             </p>
           </FadeIn>
         </div>
@@ -40,8 +40,8 @@ export default function PrivacyPage() {
                 <h2 className="text-2xl font-bold tracking-tight">Information We Collect</h2>
                 <div className="mt-4 space-y-4 text-muted-foreground">
                   <p>
-                    We may collect information you provide directly, such as your name, email address, company/organization,
-                    budget range, and project details when you submit a message via our contact form.
+                    We may collect information you provide directly, such as your name, email address, company/organisation,
+                    and message details when you submit a message via our contact form.
                   </p>
                   <p>
                     We may also collect basic technical data (such as device/browser type and approximate location) through
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
                     services.
                   </p>
                   <p>
-                    We may disclose information if required by law or to protect the rights, safety, and security of KODANI,
+                    We may disclose information if required by law or to protect the rights, safety, and security of Kodani Tech Solutions,
                     our users, or others.
                   </p>
                 </div>

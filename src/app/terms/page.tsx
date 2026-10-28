@@ -29,7 +29,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight">1. Acceptance of Terms</h2>
                 <p className="mt-4 text-muted-foreground">
-                  By accessing or using the KODANI website, you agree to these Terms of Service. If you do not agree,
+                  By accessing or using the Kodani Tech Solutions website, you agree to these Terms of Service. If you do not agree,
                   please do not use the website.
                 </p>
               </div>
@@ -114,7 +114,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="text-2xl font-bold tracking-tight">7. Limitation of Liability</h2>
                 <p className="mt-4 text-muted-foreground">
-                  To the maximum extent permitted by law, KODANI will not be liable for indirect, incidental, or
+                  To the maximum extent permitted by law, Kodani Tech Solutions will not be liable for indirect, incidental, or
                   consequential damages resulting from your use of the website or services.
                 </p>
               </div>
