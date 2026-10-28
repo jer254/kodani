@@ -130,7 +130,7 @@ export function Showcase() {
     <MotionConfig reducedMotion="user">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <div className="min-w-0">
-          <div role="tablist" aria-label="What SMIS covers" className="flex gap-2">
+          <div role="tablist" aria-label="What KodaniSIS covers" className="flex gap-2">
             {tabs.map((t) => (
               <button
                 key={t.id}

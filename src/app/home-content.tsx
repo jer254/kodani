@@ -5,7 +5,7 @@ import { ContactForm } from "@/components/home/contact-form";
 import { Mail, Phone } from "lucide-react";
 
 const timetable = [
-  { slot: "In use", name: "SMIS", note: "School management for the CBC", live: true },
+  { slot: "In use", name: "KodaniSIS", note: "School management for the CBC", live: true },
   { slot: "Next", name: "In the works", note: "Our second product", live: false },
   { slot: "Later", name: "Still being drawn up", note: "More tools for institutions", live: false },
 ];
@@ -19,7 +19,7 @@ export default function HomeContent() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <h2 className="text-4xl font-extrabold leading-[0.98] tracking-tighter sm:text-6xl">
-              SMIS runs the whole school year
+              KodaniSIS runs the whole school year
             </h2>
             <p className="mt-5 text-lg leading-8 text-chalk-dim">
               School Management Information System: admissions, academics, fees and parent communication in one
@@ -61,7 +61,7 @@ export default function HomeContent() {
               Let&apos;s talk about your school
             </h2>
             <p className="mt-5 max-w-md text-lg leading-8 text-chalk-dim">
-              Ask for a demo of SMIS, or tell us what your institution needs next. We reply within 24 hours.
+              Ask for a demo of KodaniSIS, or tell us what your institution needs next. We reply within 24 hours.
             </p>
             <ul className="mt-8 space-y-4 text-lg">
               <li>
