@@ -115,7 +115,7 @@ export function Hero() {
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-8 text-chalk-dim">
               Kodani Tech Solutions builds software for institutions that keep records that matter. Our first
-              product, SMIS, runs a Kenyan school from admission to graduation.
+              product, KodaniSIS, runs a Kenyan school from admission to graduation.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
               <a
@@ -125,7 +125,7 @@ export function Hero() {
                 Request a demo
               </a>
               <a href="#products" className="focus-ring rounded text-lg font-semibold underline decoration-accent decoration-2 underline-offset-8">
-                See what SMIS does
+                See what KodaniSIS does
               </a>
             </div>
           </div>

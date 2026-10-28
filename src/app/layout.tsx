@@ -17,7 +17,7 @@ const hand = Caveat({
 export const metadata: Metadata = {
   title: "Kodani Tech Solutions | Software for Kenyan institutions",
   description:
-    "Kodani Tech Solutions builds secure, reliable software for institutions. Our first product, SMIS, is a school management system built for Kenya's CBC.",
+    "Kodani Tech Solutions builds secure, reliable software for institutions. Our first product, KodaniSIS, is a school management system built for Kenya's CBC.",
 };
 
 export default function RootLayout({
