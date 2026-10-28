@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --border: #27272a;
-  --primary: #fafafa;
-  --primary-foreground: #18181b;
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --accent: #6366f1;
-  --accent-foreground: #fafafa;
-  --card: #18181b;
-  --card-foreground: #fafafa;
+  --board: #12302a;
+  --board-deep: #0b1f1b;
+  --chalk: #eef3ee;
+  --chalk-dim: #aabdb3;
+  --chalk-yellow: #f3d55b;
+  --paper: #f4f6f3;
+  --ink: #14211d;
+  --biro: #2540c7;
+  --stamp: #c8372d;
+  --wood: #6b4a2f;
+
+  --background: var(--board);
+  --foreground: var(--chalk);
+  --muted: #1b3d36;
+  --muted-foreground: var(--chalk-dim);
+  --border: rgba(238, 243, 238, 0.16);
+  --primary: var(--chalk-yellow);
+  --primary-foreground: var(--ink);
+  --secondary: #1b3d36;
+  --secondary-foreground: var(--chalk);
+  --accent: var(--chalk-yellow);
+  --accent-foreground: var(--ink);
 }
 
 @theme inline {
@@ -28,89 +37,94 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-board: var(--board);
+  --color-board-deep: var(--board-deep);
+  --color-chalk: var(--chalk);
+  --color-chalk-dim: var(--chalk-dim);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-biro: var(--biro);
+  --color-stamp: var(--stamp);
+  --color-wood: var(--wood);
+  --font-sans: var(--font-body), system-ui, sans-serif;
+  --font-hand: var(--font-hand), "Comic Sans MS", cursive;
 }
 
-* {
-  border-color: var(--border);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+body {
+  background-color: var(--board);
+  color: var(--chalk);
+  font-family: var(--font-sans);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+/* Chalk dust on the board */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.animate-shimmer {
+main, header, footer {
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
 
-.animate-shimmer::after {
-  content: '';
+/* Exercise-book paper: pale blue rules every 28px */
+.paper {
+  position: relative;
+  background-color: var(--paper);
+  color: var(--ink);
+  background-image: linear-gradient(to bottom, transparent 27px, rgba(70, 110, 180, 0.28) 28px);
+  background-size: 100% 28px;
+  background-position: 0 -1px;
+}
+
+.paper-margin::before {
+  content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-  animation: shimmer 2s infinite;
+  bottom: 0;
+  left: 2.75rem;
+  width: 2px;
+  background: rgba(200, 55, 45, 0.5);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #6366f1 100%);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s ease infinite;
+@media (min-width: 640px) {
+  .paper-margin::before {
+    left: 3.25rem;
+  }
 }
 
-.glow {
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3), 0 0 40px rgba(99, 102, 241, 0.1);
+.hand {
+  font-family: var(--font-hand);
+  color: var(--biro);
 }
 
-.glow-text {
-  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+.chalk-box {
+  border: 2px dashed rgba(238, 243, 238, 0.35);
+  border-radius: 14px 18px 12px 20px / 18px 12px 20px 14px;
+}
+
+.focus-ring:focus-visible {
+  outline: 3px solid var(--chalk-yellow);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
