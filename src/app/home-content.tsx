@@ -1,215 +1,204 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AnimatedBackground } from "@/components/ui/animated-background";
-import { FadeIn, StaggerContainer, StaggerItem, ScaleOnHover } from "@/components/ui/motion-wrapper";
-import { GradientOrbs, FloatingShapes, DotPattern } from "@/components/ui/geometric-patterns";
+import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/motion-wrapper";
+import { GradientOrbs, DotPattern } from "@/components/ui/geometric-patterns";
 import {
-  Palette,
-  Code,
-  Brush,
-  Users,
-  Building2,
   GraduationCap,
-  User,
-  Lightbulb,
-  Target,
-  MessageSquare,
-  Award,
-  TrendingUp,
-  Search,
-  PenTool,
-  Rocket,
+  BookOpenCheck,
+  Wallet,
+  MessagesSquare,
+  ShieldCheck,
+  History,
+  Lock,
+  MapPin,
+  Palette,
+  Mail,
+  Phone,
+  Send,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
 
-const services = [
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "We design user-centered interfaces that are intuitive, accessible, and aligned with your business goals.",
-  },
-  {
-    icon: Code,
-    title: "Software Development",
-    description: "We build fast, responsive, and scalable software experiences using modern technologies.",
-  },
-  {
-    icon: Brush,
-    title: "Digital Branding & Graphics",
-    description: "We create visual identities and digital assets that communicate clearly and build trust.",
-  },
+const smisFeatures = [
+  { icon: BookOpenCheck, title: "CBC assessment & report forms", text: "Marks, grading, rankings and printable report forms." },
+  { icon: Wallet, title: "Fees & payments", text: "Fee structures, invoices and payments with a full audit trail." },
+  { icon: MessagesSquare, title: "Parent portal & SMS", text: "Parents see only their own children's results and balances." },
+  { icon: History, title: "Permanent student history", text: "Admission to graduation, kept as an unbroken record." },
 ];
 
-const clients = [
-  { icon: Building2, name: "Small & Medium Businesses" },
-  { icon: Rocket, name: "Startups & Founders" },
-  { icon: Users, name: "NGOs & Organizations" },
-  { icon: GraduationCap, name: "Educational Institutions" },
-  { icon: User, name: "Personal Brands" },
+const reasons = [
+  { icon: History, title: "Records you can trust", text: "Results and fees are never silently overwritten. Corrections are recorded, not erased." },
+  { icon: Lock, title: "Secure by design", text: "Each institution's data is kept separate, and access follows the role of the user." },
+  { icon: MapPin, title: "Built for Kenya", text: "Made around the CBC, local payment habits and the way schools actually work." },
+  { icon: Palette, title: "Design-led", text: "Clear, simple screens that busy staff and parents can use without training." },
 ];
 
-const whyKodani = [
-  { icon: Lightbulb, title: "Design-Driven Approach", description: "We start with users, not just features" },
-  { icon: Code, title: "Technical Expertise", description: "Built by a team with strong engineering foundations" },
-  { icon: MessageSquare, title: "Clear Communication", description: "No jargon, no confusion" },
-  { icon: Award, title: "Quality Craftsmanship", description: "Clean design, clean code" },
-  { icon: TrendingUp, title: "Real-World Experience", description: "Solutions informed by real business needs" },
-];
+type FormStatus =
+  | { state: "idle" }
+  | { state: "loading" }
+  | { state: "success"; message: string }
+  | { state: "error"; message: string };
 
-const process = [
-  { step: 1, icon: Search, title: "Discovery", description: "Understanding your goals, users, and challenges" },
-  { step: 2, icon: Target, title: "Strategy & UX", description: "Defining structure, flows, and experience" },
-  { step: 3, icon: PenTool, title: "Design", description: "Creating intuitive and visually appealing interfaces" },
-  { step: 4, icon: Code, title: "Development", description: "Building responsive and performant software solutions" },
-  { step: 5, icon: Rocket, title: "Launch & Support", description: "Deployment, testing, and ongoing improvements" },
-];
+const emptyForm = { name: "", email: "", company: "", message: "" };
 
-const projects = [
-  {
-    title: "KODANI",
-    category: "Website",
-    image: "https://www.dropbox.com/scl/fi/6sb2tbsikz6t3qbt2avek/ecowave.png?rlkey=tlyhtxrqzfdrgqwg0rl3sraj9&raw=1",
-    url: "https://www.kodani.tech",
-  },
-  {
-    title: "EcoWave Tours",
-    category: "Website",
-    image: "https://image.thum.io/get/width/1200/https://www.ecowavetours.com",
-    url: "https://www.ecowavetours.com",
-  },
-  {
-    title: "CohortSync",
-    category: "Web App",
-    image: "https://image.thum.io/get/width/1200/https://www.cohortsync.com",
-    url: "https://www.cohortsync.com",
-  },
-];
+const inputClass =
+  "mt-2 w-full rounded-md border border-border bg-background px-4 py-2.5 text-sm placeholder:text-muted-foreground focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-all";
 
 export default function HomeContent() {
+  const [form, setForm] = useState(emptyForm);
+  const [status, setStatus] = useState<FormStatus>({ state: "idle" });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus({ state: "loading" });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data?.error || "Failed to send message.");
+      setStatus({ state: "success", message: "Thanks for reaching out! We'll get back to you shortly." });
+      setForm(emptyForm);
+    } catch (error) {
+      setStatus({
+        state: "error",
+        message: error instanceof Error ? error.message : "Something went wrong. Please try again.",
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center px-6 py-24 lg:px-8 overflow-hidden">
-        <AnimatedBackground />
+      {/* Hero */}
+      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-6 py-24 lg:px-8">
         <GradientOrbs />
-        
-        <div className="mx-auto max-w-4xl text-center relative z-10">
-          <FadeIn delay={0.2}>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-              Design-led digital solutions for{" "}
-              <span className="gradient-text">modern businesses</span>
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <FadeIn>
+            <p className="text-sm font-medium uppercase tracking-widest text-accent">Kodani Tech Solutions</p>
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+              Software that keeps{" "}
+              <span className="gradient-text">institutions running</span>
             </h1>
           </FadeIn>
-          
-          <FadeIn delay={0.4}>
+          <FadeIn delay={0.3}>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              We design and build polished websites and digital brands that feel great to use—and help you win trust, leads, and growth.
+              We build secure, dependable software for Kenyan organisations. Our first product, SMIS,
+              runs a school from admission to graduation.
             </p>
           </FadeIn>
-          
-          <FadeIn delay={0.6}>
+          <FadeIn delay={0.45}>
             <div className="mt-10 flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center">
-              <Link href="/contact">
-                <Button size="lg" className="w-full glow animate-shimmer sm:w-auto">Start a Project</Button>
-              </Link>
-              <Link href="/work">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">View Our Work</Button>
-              </Link>
+              <a href="#products">
+                <Button size="lg" className="w-full glow sm:w-auto">Explore SMIS</Button>
+              </a>
+              <a href="#contact">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">Request a demo</Button>
+              </a>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* What We Do */}
-      <section className="relative border-t border-border px-6 py-24 lg:px-8 overflow-hidden">
-        <DotPattern className="opacity-50" />
-        
-        <div className="mx-auto max-w-7xl relative z-10">
+      {/* Products */}
+      <section id="products" className="relative scroll-mt-16 overflow-hidden border-t border-border px-6 py-24 lg:px-8">
+        <DotPattern className="opacity-40" />
+        <div className="relative z-10 mx-auto max-w-6xl">
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">What We Do</h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our products</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                We combine design thinking, clean code, and strategic insight to build digital products that are both functional and beautiful.
+                One product today, more on the way.
               </p>
             </div>
           </FadeIn>
-          
-          <StaggerContainer className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <StaggerItem key={service.title}>
-                <ScaleOnHover>
-                  <Card className="group transition-all duration-300 hover:border-accent/50 hover:glow h-full">
-                    <CardHeader>
-                      <div>
-                        <service.icon className="h-10 w-10 text-accent" />
-                      </div>
-                      <CardTitle className="mt-4">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">{service.description}</p>
-                    </CardContent>
-                  </Card>
-                </ScaleOnHover>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
 
-      {/* Who We Help */}
-      <section className="relative border-t border-border bg-card px-6 py-24 lg:px-8 overflow-hidden">
-        <FloatingShapes />
-        
-        <div className="mx-auto max-w-7xl relative z-10">
-          <FadeIn>
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Who We Work With</h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Our solutions are designed for organizations that value clarity, usability, and long-term impact.
-              </p>
-            </div>
-          </FadeIn>
-          
-          <StaggerContainer className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {clients.map((client) => (
-              <StaggerItem key={client.name}>
-                <ScaleOnHover scale={1.05}>
-                  <div className="flex items-center gap-4 rounded-lg border border-border bg-background p-4 transition-all duration-300 hover:border-accent/50 hover:glow">
-                    <client.icon className="h-6 w-6 text-accent" />
-                    <span className="font-medium">{client.name}</span>
+          <FadeIn delay={0.1}>
+            <div className="mt-14 rounded-2xl border border-accent/40 bg-card p-8 glow lg:p-12">
+              <div className="grid gap-10 lg:grid-cols-5">
+                <div className="lg:col-span-2">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10">
+                    <GraduationCap className="h-6 w-6 text-accent" />
                   </div>
-                </ScaleOnHover>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                  <div className="mt-5 flex flex-wrap items-center gap-3">
+                    <h3 className="text-3xl font-bold tracking-tight">SMIS</h3>
+                    <span className="rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+                      Pilot schools welcome
+                    </span>
+                  </div>
+                  <p className="mt-1 text-sm text-muted-foreground">School Management Information System</p>
+                  <p className="mt-4 text-muted-foreground">
+                    One system for admissions, academics, fees and parent communication, built around
+                    Kenya&apos;s Competency Based Curriculum.
+                  </p>
+                  <a href="#contact" className="mt-6 inline-block">
+                    <Button>
+                      Request a demo
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </a>
+                </div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:col-span-3">
+                  {smisFeatures.map((f) => (
+                    <div key={f.title} className="rounded-xl border border-border bg-background p-5">
+                      <f.icon className="h-5 w-5 text-accent" />
+                      <h4 className="mt-3 font-semibold">{f.title}</h4>
+                      <p className="mt-1 text-sm text-muted-foreground">{f.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-8 flex items-center gap-4 rounded-2xl border border-dashed border-border p-6">
+              <Sparkles className="h-6 w-6 shrink-0 text-muted-foreground" />
+              <div>
+                <h3 className="font-semibold">More products coming soon</h3>
+                <p className="text-sm text-muted-foreground">
+                  We&apos;re building more tools for institutions. Get in touch to hear first.
+                </p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
-      {/* Why KODANI */}
-      <section className="relative border-t border-border px-6 py-24 lg:px-8 overflow-hidden">
-        <GradientOrbs />
-        
-        <div className="mx-auto max-w-7xl relative z-10">
+      {/* Why Kodani */}
+      <section id="why" className="relative scroll-mt-16 overflow-hidden border-t border-border bg-card px-6 py-24 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-6xl">
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Why Choose <span className="gradient-text">KODANI</span></h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Why <span className="gradient-text">Kodani</span>
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground">
+                Institutions run on records. We build software that treats them that way.
+              </p>
             </div>
           </FadeIn>
-          
-          <StaggerContainer className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {whyKodani.map((item) => (
-              <StaggerItem key={item.title}>
-                <div className="flex gap-4 group">
-                  <div className="animate-pulse-glow">
-                    <item.icon className="h-6 w-6 shrink-0 text-accent" />
+
+          <StaggerContainer className="mt-14 grid gap-8 sm:grid-cols-2">
+            {reasons.map((r) => (
+              <StaggerItem key={r.title}>
+                <div className="flex gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <r.icon className="h-5 w-5 text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-semibold group-hover:text-accent transition-colors">{item.title}</h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{item.description}</p>
+                    <h3 className="font-semibold">{r.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{r.text}</p>
                   </div>
                 </div>
               </StaggerItem>
@@ -218,139 +207,86 @@ export default function HomeContent() {
         </div>
       </section>
 
-      {/* Our Process */}
-      <section className="relative border-t border-border bg-card px-6 py-24 lg:px-8 overflow-hidden">
-        <DotPattern className="opacity-30" />
-        
-        <div className="mx-auto max-w-7xl relative z-10">
+      {/* Contact */}
+      <section id="contact" className="relative scroll-mt-16 overflow-hidden border-t border-border px-6 py-24 lg:px-8">
+        <GradientOrbs />
+        <div className="relative z-10 mx-auto max-w-5xl">
           <FadeIn>
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Process</h2>
-            </div>
-          </FadeIn>
-          
-          <div className="mx-auto mt-16 max-w-4xl">
-            <div className="relative">
-              <div className="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-accent via-purple-500 to-accent lg:left-1/2" />
-              <div className="space-y-12">
-                {process.map((item, index) => (
-                  <FadeIn key={item.step} delay={index * 0.1} direction={index % 2 === 0 ? "left" : "right"}>
-                    <div
-                      className={`relative flex items-start gap-6 ${
-                        index % 2 === 0 ? "lg:flex-row lg:justify-end lg:pr-[calc(50%+2rem)]" : "lg:flex-row lg:justify-start lg:pl-[calc(50%+2rem)]"
-                      }`}
-                    >
-                      <div className={`flex items-start gap-4 ${index % 2 === 0 ? "lg:flex-row-reverse lg:text-right" : ""}`}>
-                        <ScaleOnHover scale={1.1}>
-                          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-background glow">
-                            <item.icon className="h-6 w-6 text-accent" />
-                          </div>
-                        </ScaleOnHover>
-                        <div>
-                          <div className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
-                            Step {item.step}
-                          </div>
-                          <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
-                          <p className="mt-1 text-muted-foreground">{item.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Work */}
-      <section className="relative border-t border-border px-6 py-24 lg:px-8 overflow-hidden">
-        <FloatingShapes />
-        
-        <div className="mx-auto max-w-7xl relative z-10">
-          <FadeIn>
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Selected Work</h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Get in touch</h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                A selection of projects and concepts showcasing our approach to design and development.
+                Want a demo of SMIS, or to hear about what we build next? Send us a message.
               </p>
             </div>
           </FadeIn>
-          
-          <StaggerContainer className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
-              <StaggerItem key={project.title}>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block"
-                >
-                  <ScaleOnHover>
-                    <Card className="overflow-hidden transition-all duration-300 hover:border-accent/50 hover:glow">
-                      <div className="aspect-video relative bg-secondary overflow-hidden">
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      </div>
-                      <CardHeader>
-                        <p className="text-sm text-accent">{project.category}</p>
-                        <CardTitle className="flex items-center gap-2">
-                          {project.title}
-                          <ArrowRight className="h-4 w-4 opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-1" />
-                        </CardTitle>
-                      </CardHeader>
-                    </Card>
-                  </ScaleOnHover>
-                </a>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-          
-          <FadeIn delay={0.3}>
-            <div className="mt-12 text-center">
-              <Link href="/work">
-                <Button variant="outline" className="group">
-                  View All Projects
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </Link>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
-      {/* Final CTA */}
-      <section className="relative border-t border-border bg-card px-6 py-24 lg:px-8 overflow-hidden">
-        <GradientOrbs />
-        
-        <div className="mx-auto max-w-3xl text-center relative z-10">
-          <FadeIn>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Ready to build something <span className="gradient-text">meaningful</span>?
-            </h2>
-          </FadeIn>
-          
-          <FadeIn delay={0.2}>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Let&apos;s discuss your project and see how we can help bring your vision to life.
-            </p>
-          </FadeIn>
-          
-          <FadeIn delay={0.4}>
-            <div className="mt-10">
-              <Link href="/contact">
-                <Button size="lg" className="glow animate-shimmer">
-                  Start a Project
-                  <ArrowRight className="ml-2 h-4 w-4" />
+          <div className="mt-14 grid gap-12 lg:grid-cols-5">
+            <FadeIn className="lg:col-span-3">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium">Name</label>
+                    <input id="name" name="name" type="text" required value={form.name} onChange={handleChange} className={inputClass} placeholder="Your name" />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium">Email</label>
+                    <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} className={inputClass} placeholder="you@example.com" />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium">School / Organisation</label>
+                  <input id="company" name="company" type="text" value={form.company} onChange={handleChange} className={inputClass} placeholder="Optional" />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium">Message</label>
+                  <textarea id="message" name="message" required rows={5} value={form.message} onChange={handleChange} className={inputClass} placeholder="How can we help?" />
+                </div>
+
+                {status.state === "success" || status.state === "error" ? (
+                  <p role="status" className={`text-sm ${status.state === "error" ? "text-red-400" : "text-emerald-500"}`}>
+                    {status.message}
+                  </p>
+                ) : null}
+
+                <Button type="submit" size="lg" disabled={status.state === "loading"} className="w-full sm:w-auto">
+                  <Send className="mr-2 h-4 w-4" />
+                  {status.state === "loading" ? "Sending..." : "Send message"}
                 </Button>
-              </Link>
-            </div>
-          </FadeIn>
+              </form>
+            </FadeIn>
+
+            <FadeIn delay={0.15} className="lg:col-span-2">
+              <div className="space-y-6">
+                <a href="mailto:enquiry.kodani@gmail.com" className="flex items-start gap-4 group">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <Mail className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Email</p>
+                    <p className="text-muted-foreground transition-colors group-hover:text-accent">enquiry.kodani@gmail.com</p>
+                  </div>
+                </a>
+                <a href="tel:0743551170" className="flex items-start gap-4 group">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <Phone className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Phone / WhatsApp</p>
+                    <p className="text-muted-foreground transition-colors group-hover:text-accent">0743551170</p>
+                  </div>
+                </a>
+                <div className="flex items-start gap-4">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    <ShieldCheck className="h-5 w-5 text-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium">Response time</p>
+                    <p className="text-muted-foreground">Within 24 hours</p>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
     </div>

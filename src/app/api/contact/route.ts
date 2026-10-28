@@ -14,6 +14,14 @@ function isValidEmail(email: unknown): email is string {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function buildEmailHtml({
   name,
   email,
@@ -21,6 +29,11 @@ function buildEmailHtml({
   budget,
   message,
 }: Record<string, string>) {
+  name = escapeHtml(name);
+  email = escapeHtml(email);
+  company = escapeHtml(company);
+  budget = escapeHtml(budget);
+  message = escapeHtml(message);
   return `
     <div style="font-family: Arial, sans-serif; line-height: 1.6;">
       <h2>New contact form submission</h2>

@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KODANI | Design-Led Digital Solutions",
-  description: "KODANI helps businesses, startups, and organizations turn ideas into intuitive, high-performing digital experiences through UI/UX design, software development, and branding.",
+  title: "Kodani Tech Solutions | Software for Kenyan institutions",
+  description:
+    "Kodani Tech Solutions builds secure, reliable software for institutions. Our first product, SMIS, is a school management system built for Kenya's CBC.",
 };
 
 export default function RootLayout({
